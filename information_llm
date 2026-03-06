@@ -1,0 +1,21 @@
+use here the data from the dataagent , based on companies symbol . 
+
+no support of Indian companies 
+
+for indian companies use 
+
+API Provider	NSE Support	BSE Support	Real-Time Data	Historical Data
+Financial Modeling Prep	Yes	Yes	Limited	Yes
+EODHD	Yes	Yes	Yes	Yes
+IEX Cloud	Yes	Yes	Yes	Yes
+Fmp Cloud	Yes	No	No	Yes
+BrAPI	No	No	No	Yes
+
+a library yfinance also has some access for this 
+
+
+LLm use the matrix data 
+and tell about the investment risk 
+and a whole summary 
+
+use any vector database --> in the environment chroma db is there other than this you can use qdrant
