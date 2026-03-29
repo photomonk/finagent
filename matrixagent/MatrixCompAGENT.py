@@ -72,6 +72,16 @@ class MetricsAgent:
             cashflow_latest["free_cash_flow"],
             cashflow_prev["free_cash_flow"] if cashflow_prev else None
         )
+        OPERATING_MARGIN = safe_div(
+            income_latest["operating_income"],
+            income_latest["revenue"]
+        )
+        ASSET_TURNOVER = safe_div(
+            income_latest["revenue"],
+            balance_latest["total_assets"]
+        )
+        
+
 
         metrics = {
             "symbol": symbol,
@@ -83,6 +93,9 @@ class MetricsAgent:
             "revenue_growth": revenue_growth,
             "free_cash_flow": free_cash_flow,
             "fcf_growth": fcf_growth,
+            "operating_margin": OPERATING_MARGIN,
+            "asset_turnover": ASSET_TURNOVER,
+            
             "generated_at": str(datetime.datetime.utcnow())
         }
 
@@ -90,3 +103,4 @@ class MetricsAgent:
         self.memory.store(metrics_key, metrics, ttl=3600)
 
         return metrics
+    

@@ -3,6 +3,7 @@ import datetime
 from pymongo import MongoClient
 
 
+
 class MemoryLayer:
 
     def __init__(self,
@@ -34,6 +35,8 @@ class MemoryLayer:
 
         # 2️⃣ Store in MongoDB
         self._store_mongodb(key, value, data_type)
+        
+
 
         self.logs.append({
             "event": "STORE",
@@ -60,10 +63,24 @@ class MemoryLayer:
             {"$set": document},
             upsert=True
         )
+    # -----------------------------------
+    # VECTORDB STORAGE FUNCTION
+    # -----------------------------------
+    
+        
 
     # -----------------------------------
     # RETRIEVE FUNCTION
     # -----------------------------------
+    def check_key(self,key):
+        try:
+            return key in self.cache
+        except:
+            return False
+    
+    
+
+    
     def retrieve(self, key):
 
         # 1️⃣ Check in-memory
