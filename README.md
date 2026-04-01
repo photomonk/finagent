@@ -262,6 +262,4 @@ google-generativeai
 
 
 
-## License
 
-MIT
